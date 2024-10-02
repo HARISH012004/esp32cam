@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Welcome to the Dashboard</h1>
+
+    <!-- Video URL Input -->
+    <form method="POST" action="{{ url_for('dashboard') }}">
+        <label for="video_url">Enter YouTube Video URL:</label>
+        <input type="text" id="video_url" name="video_url" required>
+        <button type="submit" name="play_video">Play Video</button>
+    </form>
+
+    <!-- Display video if a URL was submitted -->
+    {% if video_url %}
+    <h2>Video</h2>
+    <iframe width="1600" height="600" src="{{ video_url }}" frameborder="0" allowfullscreen></iframe>
+    {% endif %}
+
+    <!-- Display ESP32-CAM stream -->
+    <h2>ESP32-CAM Live Stream</h2>
+    <iframe width="1600" height="600" src="{{ esp32_cam_url }}" frameborder="0" allowfullscreen></iframe>
+</body>
+</html>
